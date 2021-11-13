@@ -64,7 +64,7 @@ const handleGoogleLoginMain = () => {
       
       </form>
 
-                <p>New Here? <Link to="/register">Create Account</Link></p>
+                <p className="mt-5">New Here? <Link to="/register">Create Account</Link></p>
             </div>
           
         </div>
