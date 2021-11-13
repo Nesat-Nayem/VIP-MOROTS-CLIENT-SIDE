@@ -1,0 +1,23 @@
+.header-container {
+    
+    position: relative;
+ 
+    background-size: cover;
+}
+
+.header-container::after {
+    height: 700px;
+    content: ' ';
+    position: absolute;
+    top: 0;
+    width: 44%;
+    right: 0;
+   
+    background-repeat: no-repeat;
+    z-index: -50;
+}
+
+
+.color-3{
+    color: rgba(34, 22, 204, 0.685) ;
+}
