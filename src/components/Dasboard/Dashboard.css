@@ -1,9 +1,10 @@
 .dashboard {
-  background-color: rgb(26, 153, 126);
+  background-color: #F14273;
   height: 100vh;
   color: rgb(8, 0, 0) !important;
   cursor: pointer;
 }
+
 a{
   text-decoration: none;
 }

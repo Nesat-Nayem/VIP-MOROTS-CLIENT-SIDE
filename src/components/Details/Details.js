@@ -6,11 +6,12 @@ const Details = () => {
   const [service, setService] = useState({});
   const { user } = useFirebase();
   const { serviceId } = useParams();
-  // console.log(serviceId);
+ 
 
   const {
     register,
     handleSubmit,
+    reset,
     watch,
     formState: { errors },
   } = useForm();
@@ -24,8 +25,14 @@ const Details = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
-    console.log(data);
+      .then((result) => {
+        if (result.insertedId) {
+          alert('order is Recorded .... got it soon');
+     
+          reset();
+      }
+      });
+    
   };
 
   useEffect(() => {
@@ -48,12 +55,7 @@ const Details = () => {
           </div>
           <div className="col-md-6">
             <form onSubmit={handleSubmit(onSubmit)}>
-              {/* <input
-                {...register("name")}
-                placeholder="Name"
-                defaultValue={service?.name}
-                className="p-2 m-2 w-100 input-field"
-              /> */}
+            
               <input
                 {...register("name")}
                 placeholder="Name"
@@ -69,16 +71,9 @@ const Details = () => {
                 defaultValue={user?.email}
                 className="p-2 m-2 w-100 input-field"
               />
-              {/* <input
-                {...register("name")}
-                placeholder="Name"
-                
-                defaultValue={user?.Name}
-                className="p-2 m-2 w-100 input-field"
-              /> */}
+          
 
-              
-
+        
               <input
                 {...register("city")}
                 placeholder="Your City"
@@ -100,33 +95,7 @@ const Details = () => {
                 type="number"
                 className="p-2 m-2 w-100 input-field"
               />
-
-              
-
-              {/* <select {...register("model")} className="p-2 m-2 w-100">
-                <option value="premium">premium</option>
-                <option value="classic">classic</option>
-                <option value="business">business</option>
-              </select>
-              <br /> */}
-{/* 
-              {errors.exampleRequired && <span>This field is required</span>} */}
-
-              {/* costom */}
-              {/* <input defaultValue={user.email} {...register("email", { required: true })} /> */}
-
-                {/* {errors.email && <span className="error">This field is required</span>} */}
-
-
-                {/* <input placeholder="Address" defaultValue="" {...register("address")} /> */}
-
-
-                {/* <input placeholder="City" defaultValue="" {...register("city")} /> */}
-
-
-                {/* <input placeholder="phone number" defaultValue="" {...register("phone")} />
-               */}
-
+    
               <input
                 type="submit"
                 value="Order now"

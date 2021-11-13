@@ -12,28 +12,28 @@ const FooterQuickLinks = () => {
                 <li>
                     <Link to="/" style={{textDecoration:'none'}} className="text-white">
                     <FontAwesomeIcon className="me-5 " style={{fontSize:'2em'}} icon={faTwitter}/>
-                         {/* <span style={{fontSize:'1.3em',}}>Twitter</span> */}
+                        
                     </Link>
                 </li>
 
                 <li>
                     <Link to="/" style={{textDecoration:'none'}} className="text-white">
                     <FontAwesomeIcon className="me-5 " style={{fontSize:'2em'}} icon={faFacebook}/>
-                        {/* <span style={{fontSize:'1.3em',}} >Facebook</span> */}
+                     
                     </Link>
                 </li>
 
                 <li>
                     <Link to="/" style={{textDecoration:'none'}} className="text-white">
                     <FontAwesomeIcon className="me-5 " style={{fontSize:'2em'}} icon={faWhatsapp}/>
-                         {/* <span style={{fontSize:'1.3em',}}>Whatsapp</span> */}
+                        
                     </Link>
                 </li>
 
                 <li>
                     <Link to="/" style={{textDecoration:'none'}} className="text-white">
                     <FontAwesomeIcon className="me-5 " style={{fontSize:'2em'}} icon={faInstagram}/>
-                        {/* <span style={{fontSize:'1.3em',}}>Instagram</span> */}
+                       
                     </Link>
                 </li>
             </ul> 

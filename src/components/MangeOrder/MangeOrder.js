@@ -18,7 +18,7 @@ const MangeOrder = () => {
       .then((data) => setOrders(data));
   }, []);
 
-  // const status = "apporved";
+
   const handleOrderId = (id) => {
     setOrderId(id);
     console.log(id);
@@ -44,8 +44,7 @@ const MangeOrder = () => {
           <tr>
             <th>#</th>
             <th>Product Title</th>
-            {/* <th>Event description</th> */}
-            {/* <th>Image Link</th> */}
+
             <th>Order Status</th>
             <th>Action</th>
           </tr>
@@ -55,8 +54,7 @@ const MangeOrder = () => {
             <tr>
               <td>{index}</td>
               <td>{pd.name}</td>
-              {/* <td>{pd.description}</td> */}
-              {/* <td>{pd.image}</td> */}
+          
               <td>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <select

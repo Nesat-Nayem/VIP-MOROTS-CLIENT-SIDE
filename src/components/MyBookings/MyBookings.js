@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import useFirebase from "./../../hooks/useFirebase";
-
 const MyBookings = () => {
   const { user } = useFirebase();
   const [books, setBooks] = useState([])
@@ -30,7 +29,7 @@ const MyBookings = () => {
 }
 
   return (
-    <div className="row">
+    <div className="row container">
             
     <h1 className="text-center">All Orders</h1>
 
@@ -42,12 +41,15 @@ const MyBookings = () => {
                 <div className="card-body">
                 
                    
+               
                     <p>{book?.name}</p> 
-                    {/* <p>{book.email}</p> */}
-                    <p>{book?.status}</p>
+                    
+                 
+                    <p>{book.email}</p>
+                    
                     <p>{book?.city}</p>
                     
-
+                    <p className="m-4">{book?.status}</p>
                     <button className="btn btn-danger" onClick={()=>handleDelete(book._id)}>delete book</button>
                     </div>
                     </div>

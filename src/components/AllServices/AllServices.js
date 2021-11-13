@@ -33,17 +33,7 @@ const AllServices = () => {
                   </div>
 
                   <p>{pd.description}</p>
-                  
-
-                  {/* <Rating
-                                initialRating={pd.star}
-                                emptySymbol="far fa-star icon-color"
-                                fullSymbol="fas fa-star icon-color"
-                                readonly>
-
-                            </Rating> */}
-
-                  
+                                    
                 </div>
               </div>
             ))}

@@ -16,8 +16,6 @@ const BlogCard = (props) => {
 
                     <p className="text-start">{subTitle}</p>
                    
-                    
-                    {/* <p>{description}</p> */}
                   
                 </div>
                

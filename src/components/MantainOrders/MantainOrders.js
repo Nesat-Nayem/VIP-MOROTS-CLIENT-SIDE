@@ -36,7 +36,7 @@ const MantainOrders = () => {
 
         {
             mantains.map(mantain => <div
-                className="col-md-4" 
+                className="col-md-6" 
             key={mantain._id}>
 
                 <div className="col">
@@ -55,7 +55,6 @@ const MantainOrders = () => {
             </div>)
         }
        
-
         </div>
     );
 };

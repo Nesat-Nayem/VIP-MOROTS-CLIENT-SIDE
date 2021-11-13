@@ -8,7 +8,9 @@ const AddServices = () => {
   const {
     register,
     handleSubmit,
+    reset,
     watch,
+    
     formState: { errors },
   } = useForm();
 
@@ -19,8 +21,12 @@ const AddServices = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
-    console.log(data);
+      .then((result) => {
+        if (result.insertedId) {
+          alert('add successfully');     
+          reset();
+      }
+      });
   };
   return (
     <div>
@@ -54,18 +60,7 @@ const AddServices = () => {
                   type="number"
                   className="p-2 m-2 w-100 input-field"
                 />
-                {/* <input
-                  {...register("room", { required: true })}
-                  placeholder="room"
-                  type="number"
-                  className="p-2 m-2 w-100 input-field"
-                /> */}
-
-                {/* <select {...register("model")} className="p-2 m-2 w-100">
-                  <option value="premium">premium</option>
-                  <option value="classic">classic</option>
-                  <option value="business">business</option>
-                </select> */}
+              
                 <br />
 
                 {errors.exampleRequired && <span>This field is required</span>}

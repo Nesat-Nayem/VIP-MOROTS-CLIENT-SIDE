@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import useFirebase from "./../../hooks/useFirebase";
 
 const Review = () => {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit,reset, watch, errors } = useForm();
   const { user } = useFirebase();
   const onSubmit = (data) => {
     fetch("https://polar-cliffs-75761.herokuapp.com/addReview", {
@@ -12,9 +12,15 @@ const Review = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
+      .then((result) => {
+        if (result.insertedId) {
+          alert('Thanks for your valuable Review');
+     
+          reset();
+      }
+       
+      });
 
-    console.log(data);
   };
   return (
     <div>

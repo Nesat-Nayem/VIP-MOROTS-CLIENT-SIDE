@@ -6,13 +6,10 @@ import AddServices from "./../AddServices/AddServices";
 import Review from "./../Review/Review";
 import MyBookings from "./../MyBookings/MyBookings";
 import MakeAdmin from "./../MakeAdmin/MakeAdmin";
-// import ManageServices from "./../ManageServices/ManageServices";
-// import ManageOrder from "./../MangeOrder/MangeOrder";
 import useFirebase from "./../../hooks/useFirebase";
 import PayUs from "../PayUs/PayUs";
 import MangeOrder from "./../MangeOrder/MangeOrder";
 import MantainOrders from "../MantainOrders/MantainOrders";
-// import useAuth from "./../../hooks/useAuth"
 
 const Dashbaord = () => {
   let { path, url } = useRouteMatch();
@@ -24,7 +21,7 @@ const Dashbaord = () => {
     fetch(`https://polar-cliffs-75761.herokuapp.com/checkAdmin/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        // if (data[0]?.role === "admin") {
+      
         if (data[0]?.role === "admin") {
 
           setIsAdmin(true);
@@ -40,64 +37,29 @@ const Dashbaord = () => {
       <div className="dashboard-container ">
         <div className="row">
           <div className="col-md-3 ">
-            <div className="dashboard">
-              <h5>{user.email && isAdmi? <h5>admin</h5>:<h5>user</h5>} Dashboard</h5>
+            <div className="dashboard text-start ps-3">
+              <h5 className="fw-bold py-3">{user.email && isAdmi? <h5>ADMIN</h5>:<h5>user</h5>} DASHBOARD</h5>
 
-              {/* {user.email&&isAdmi?alert('admin entry'):<div></div>} */}
-
-
-             
-
-                
-                  {/* {!user.email && !isAdmi?
-                  <Link to={`${url}`}>
-                  <li className="dashboard-menu">my Orders</li>
-                </Link>
-                :<div></div>} */}
-
-                  
                   <Link to={`${url}/myBooking`}>
-                  <li className="dashboard-menu">my Orders</li>
+                  <li className="dashboard-menu mb-2">My Orders</li>
                 </Link>
                 
-              
-                
-              
               <Link to={`${url}/review`}>
-                <li className="dashboard-menu">Review</li>
+                <li className="dashboard-menu mb-2">Review</li>
               </Link>
              
-
-             
-           
               <Link to={`${url}/payUs`}>
-                <li className="dashboard-menu">Pay us</li>
+                <li className="dashboard-menu mb-2">Pay Us</li>
               </Link>
          
-
-              
-              
               <Link to="/login">
-                <button onClick={handleLogout}>Logout</button>
+                <button className="mb-4 btn" onClick={handleLogout}>Logout</button>
               </Link>
               
-             
-
-
-             
-
-               
-              
-                {/* {isAdmi && ( */}
-                  {/* // <Link to={`${url}/addService`}>
-                  //   <li className="dashboard-menu">Add Service</li>
-                  // </Link>
-                // )} */}
-
                 {user.email && isAdmi?
               
                   <Link to={`${url}/addService`}>
-                    <li className="dashboard-menu">Add Service</li>
+                    <li className="dashboard-menu mb-2">Add Service</li>
                   </Link>
 
                    :<div></div>
@@ -106,40 +68,29 @@ const Dashbaord = () => {
 
                 {user.email&& isAdmi? 
                   <Link to={`${url}/manageOrder`}>
-                  <li className="dashboard-menu">Manage Orders</li>
+                  <li className="dashboard-menu mb-2">Manage Orders</li>
                 </Link>
                 :<div></div>}
 
-                  {/* <Link to={`${url}/addService`}>
-                  <li className="dashboard-menu">Add A Services</li>
-                </Link> */}
-
                 {user.email&& isAdmi? 
                 <Link to={`${url}/makeAdmin`}>
-                  <li className="dashboard-menu">Make Admin</li>
+                  <li className="dashboard-menu mb-2">Make Admin</li>
                 </Link>
                 :<div></div>}
 
                 {user.email && isAdmi? 
                 <Link to={`${url}/mantainOrders`}>
-                  <li className="dashboard-menu">manage services</li>
+                  <li className="dashboard-menu mb-2">Manage Services</li>
                 </Link>
                 : <div></div>}
               {user.email&& isAdmi? 
                 
                 <Link to="/login">
-                <button onClick={handleLogout}>Logout</button>
+                <button className="btn" onClick={handleLogout}>Logout</button>
               </Link>
                 
                 :<div></div>}
              
-
-              
-              
-
-
-
-              
             </div>
           </div>
           <div className="col-md-9">
@@ -155,9 +106,6 @@ const Dashbaord = () => {
                 <PayUs></PayUs>
               </Route>
 
-              {/* <Route exact path={`${path}/BookingList`}>
-                <MyBookings></MyBookings>
-              </Route> */}
               <Route exact path={`${path}/addService`}>
                 <AddServices></AddServices>
               </Route>
@@ -166,13 +114,12 @@ const Dashbaord = () => {
               </Route>
               
               <Route exact path={`${path}/manageOrder`}>
-                {/* <ManageServices></ManageServices> */}
+              
                 <MangeOrder></MangeOrder>
               </Route>
 
-              <Route exact path={`${path}/mantainOrders`}>
-                {/* <ManageServices></ManageServices> */}
-                <MantainOrders></MantainOrders>
+              <Route exact path={`${path}/mantainOrders`}>             
+              <MantainOrders></MantainOrders>
               </Route>
             </Switch>
           </div>

@@ -23,7 +23,7 @@ const Blog = () => {
                 <div className="my-5">
                 
                 <h1 className="text-start"><span className="color-2">EXECUTIVE</span> <span className="color-1">TEAM </span></h1>
-                {/* <h5 className="text-center fw-bolder color-2">we explane all time new</h5> */}
+               
                 </div>
                    
                 <div className="row">

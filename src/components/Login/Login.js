@@ -9,9 +9,6 @@ const Login = () => {
   const { 
     handleGoogleLogin, 
     handleUserLogin } = useFirebase();
-  // const location = useLocation();
-  //   const history = useHistory();
-  //   const redirect_uri = location.state?.from || '/details';
   const { register, handleSubmit, watch, errors } = useForm();
 
   const handleOnChange = e =>{
@@ -67,12 +64,7 @@ const handleGoogleLoginMain = () => {
       
       </form>
 
-                <p>new here? <Link to="/register">Create Account</Link></p>
-                <div> Or You Can Choose</div>
-                <button
-                    className="btn btn-success"
-                    onClick={handleGoogleLoginMain}
-                >Google Sign In</button>
+                <p>New Here? <Link to="/register">Create Account</Link></p>
             </div>
           
         </div>
