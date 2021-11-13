@@ -13,7 +13,7 @@ const MangeOrder = () => {
 
   console.log(status);
   useEffect(() => {
-    fetch("http://localhost:5000/allOrders")
+    fetch("https://polar-cliffs-75761.herokuapp.com/allOrders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
@@ -26,7 +26,7 @@ const MangeOrder = () => {
 
   const onSubmit = (data) => {
     console.log(data, orderId);
-    fetch(`http://localhost:5000/statusUpdate/${orderId}`, {
+    fetch(`https://polar-cliffs-75761.herokuapp.com/statusUpdate/${orderId}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -34,28 +34,6 @@ const MangeOrder = () => {
       .then((res) => res.json())
       .then((result) => console.log(result));
   };
-
-  // delete
-  // delete api
-  // const handleDelete = id => {
-  //   const url = `http://localhost:5000/allOrders/${id}`;
-  //   fetch(url,{
-  //       method : 'DELETE'
-  //   })
-  //   .then(res => res.json())
-  //   .then(data => {
-  //       console.log(data);
-  //       if(data.deletedCount){
-  //           alert('delete successfully')
-
-  //           const remaining = orders.filter(kook => kook._id !== id);
-  //           setOrders(remaining);
-  //       }
-
-        
-  //   })
-
-  // delete api
 
   return (
     <div className="container">

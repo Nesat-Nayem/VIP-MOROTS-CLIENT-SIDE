@@ -6,7 +6,7 @@ const Slider = () => {
     return (
         <div className="header-container mb-5">        
             <SliderMain></SliderMain>
-            <h1 className="text-center color-3 my-5">Choose Your Favorite Appartment</h1>
+            <h1 className="text-center color-3 my-5">Explore Your Dream Car</h1>
         </div>
     );
 };

@@ -5,7 +5,7 @@ import './MantainOrders.css'
 const MantainOrders = () => {
     const [mantains, setMantains] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/allServices')
+        fetch('https://polar-cliffs-75761.herokuapp.com/allServices')
     .then(res => res.json())
     // .then(data => setMantains(data.products))
     .then(data => setMantains(data))
@@ -13,7 +13,7 @@ const MantainOrders = () => {
 
     const handleDelete = id => {
 
-        const url = `http://localhost:5000/allServices/${id}`;
+        const url = `https://polar-cliffs-75761.herokuapp.com/allServices/${id}`;
         fetch(url,{
             method : 'DELETE'
         })

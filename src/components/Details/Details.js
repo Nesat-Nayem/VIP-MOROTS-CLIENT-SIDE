@@ -18,7 +18,7 @@ const Details = () => {
   const onSubmit = (data) => {
     data.email = user?.email;
     data.status = "pending";
-    fetch("http://localhost:5000/addOrders", {
+    fetch("https://polar-cliffs-75761.herokuapp.com/addOrders", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -29,7 +29,7 @@ const Details = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/singleService/${serviceId}`)
+    fetch(`https://polar-cliffs-75761.herokuapp.com/singleService/${serviceId}`)
       .then((res) => res.json())
       .then((data) => setService(data));
   }, []);
@@ -39,10 +39,12 @@ const Details = () => {
       <div className="details-container">
         <div className="row container">
           <div className="col-md-6">
-            <img className="w-50" src={service.image} alt="" />
+            <img className="w-100" src={service.image} alt="" />
+            <h4 className="text-start m-3">{service?.name}</h4>
+            <h4 className="text-end mb-3"> ${service?.price}</h4>
             <p>{service?.description}</p>
-            <h1>{service?.name}</h1>
-            <h1> {service?.price}</h1>
+            
+            
           </div>
           <div className="col-md-6">
             <form onSubmit={handleSubmit(onSubmit)}>

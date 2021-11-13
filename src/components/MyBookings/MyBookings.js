@@ -6,7 +6,7 @@ const MyBookings = () => {
   const [books, setBooks] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myOrder/${user?.email}`)
+    fetch(`https://polar-cliffs-75761.herokuapp.com/myOrder/${user?.email}`)
       .then((res) => res.json())
       // .then((data) => console.log(data));
       .then((data) => setBooks(data));
@@ -14,7 +14,7 @@ const MyBookings = () => {
 
   const handleDelete = id => {
         
-    fetch(`http://localhost:5000/myOrder/${id}`, {
+    fetch(`https://polar-cliffs-75761.herokuapp.com/myOrder/${id}`, {
         method : 'DELETE'
     })
     .then(res => res.json())

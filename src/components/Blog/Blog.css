@@ -1,7 +1,9 @@
 .color-1{
-    color:rgb(107, 28, 180)
+   
+    color: #F0151F;
 }
 
 .color-2{
-    color: brown;
+    /* color: #F0151F; */
+    color:rgb(221, 43, 162);
 }

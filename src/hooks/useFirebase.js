@@ -56,7 +56,7 @@ const useFirebase = () => {
 
 
   useEffect(()=>{
-    fetch(`http://localhost:5000/checkAdmin/${user.email}`)
+    fetch(`https://polar-cliffs-75761.herokuapp.com/checkAdmin/${user.email}`)
     .then(res => res.json())
     .then(data => setAdmin(data.admin))
 },[user.email])
@@ -92,7 +92,7 @@ const useFirebase = () => {
   };
 
   const hanldeUserInfoRegister = (email) => {
-    fetch("http://localhost:5000/addUserInfo", {
+    fetch("https://polar-cliffs-75761.herokuapp.com/addUserInfo", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ email }),

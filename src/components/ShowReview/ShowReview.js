@@ -12,14 +12,14 @@ import "./ShowReview.css"
 const ShowReview = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-      fetch("http://localhost:5000/myReview")
+      fetch("https://polar-cliffs-75761.herokuapp.com/myReview")
         .then((res) => res.json())
         .then((data) => setReviews(data));
     }, []);
     console.log(reviews);
     return (
       <div>
-        <h1> our Happy Customer Says Services</h1>
+        <h1>Why Clients <span className="color_clint">Love Us</span></h1>
         <div className="reviews">
           <div className="row container">
             {reviews?.map((pd, index) => (
@@ -29,7 +29,8 @@ const ShowReview = () => {
                   <div className="service-img">
                     <img className="w-50 img_circle" src={pd?.img} alt="" />
                   </div>
-                  <p className="fw-bold">{pd?.Position}</p>
+                  <p className="fw-bold mt-3 text-start">{pd?.name}</p>
+                  <p className="text-start">{pd?.Position}</p>
                   <div className="ms-5">
 
                   <BeautyStars
