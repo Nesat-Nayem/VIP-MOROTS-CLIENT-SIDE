@@ -1,4 +1,15 @@
-.box {
+/* .box {
   width: 250px;
   height: 200px;
+} */
+
+/* .formControl{
+  display:flex;
+  justify-content: center;
+  
+} */
+
+.fscolor{
+  color: rgb(13, 226, 49);
+  font-size: 20px;
 }
