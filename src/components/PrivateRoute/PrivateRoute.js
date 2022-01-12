@@ -1,14 +1,18 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import useFirebase from '../../hooks/useFirebase';
+import useAuth from '../../hooks/useAuth';
+// import useFirebase from '../../hooks/useFirebase';
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const email= sessionStorage.getItem("email");
-  
+    console.log(children);
+    // const email= sessionStorage.getItem("email");
+    const {user, isLoading} = useAuth();
+    console.log(user);
+    if(isLoading) return 'loading';
     return (
         <Route
             {...rest}
-            render={({ location }) => email ? children : <Redirect
+            render={({ location }) => user.email ? children : <Redirect
                 to={{
                     pathname: "/login",
                     state: { from: location }

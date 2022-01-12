@@ -5,7 +5,10 @@ import useFirebase from "./../../hooks/useFirebase";
 import { Link, useLocation, useHistory } from "react-router-dom";
 const Login = () => {
   const [logInData,setLogInData] = useState({});
-  
+  console.log(logInData);
+
+  const location = useLocation()
+  const history = useHistory()
   const { 
     handleGoogleLogin, 
     handleUserLogin } = useFirebase();
@@ -16,7 +19,9 @@ const Login = () => {
     const value = e.target.value;
     const newLogInData = {...logInData};
     newLogInData[field] = value;
+   
     setLogInData(newLogInData);
+    console.log(newLogInData);
     
   }
 
@@ -24,7 +29,9 @@ const Login = () => {
     e.preventDefault();
   }
 const onSubmit = (data) => {
-  handleUserLogin(data.email, data.password)
+  console.log(data);
+  handleUserLogin(data.email, data.password, location, history)
+  console.log(handleUserLogin);
 
 }
 

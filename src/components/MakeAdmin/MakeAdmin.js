@@ -2,7 +2,7 @@ import React from "react";
 import "./MakeAdmin.css";
 import { useForm } from "react-hook-form";
 const MakeAdmin = () => {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit,reset, watch, errors } = useForm();
 
   const onSubmit = (data) => {
     fetch("https://polar-cliffs-75761.herokuapp.com/makeAdmin", {
@@ -11,8 +11,15 @@ const MakeAdmin = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
-    console.log(data);
+      .then((result) => {
+        if (result.insertedId) {
+          alert('successfully add admin');
+     
+          reset();
+      }
+        // console.log(result)
+      });
+    // console.log(data);
   };
   return (
     <div>

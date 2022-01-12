@@ -8,7 +8,7 @@ const Services = () => {
       .then((res) => res.json())
       .then((data) => setServices(data.slice(0, 6)));
   }, []);
-  console.log(services);
+  // console.log(services);
   return (
     <div>
      

@@ -6,8 +6,6 @@ const Details = () => {
   const [service, setService] = useState({});
   const { user } = useFirebase();
   const { serviceId } = useParams();
- 
-
   const {
     register,
     handleSubmit,
@@ -28,7 +26,7 @@ const Details = () => {
       .then((result) => {
         if (result.insertedId) {
           alert('order is Recorded .... got it soon');
-     
+    
           reset();
       }
       });
@@ -70,24 +68,18 @@ const Details = () => {
                 
                 defaultValue={user?.email}
                 className="p-2 m-2 w-100 input-field"
-              />
-          
-
-        
+              />        
               <input
                 {...register("city")}
                 placeholder="Your City"
-
                 className="p-2 m-2 w-100 input-field"
               /> 
-
               <input
                 {...register("address")}
                 
                 placeholder="Address"
                 className="p-2 m-2 w-100 input-field"
               />
-
               <input
                 {...register("phone")}
                 placeholder="Phone Number"

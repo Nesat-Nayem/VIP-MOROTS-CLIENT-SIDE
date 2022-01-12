@@ -17,10 +17,12 @@ import AllServices from "./components/AllServices/AllServices";
 import Footer from "./components/Footer/Footer";
 import MantainOrders from "./components/MantainOrders/MantainOrders";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import AuthProvider from "./context/AuthProvider";
 
 function App() {
   return (
     <div className="App">
+      <AuthProvider>
       <Router>
       
         <Navbar></Navbar>
@@ -78,7 +80,8 @@ function App() {
 
         <Footer></Footer>
 
-      </Router>     
+      </Router> 
+      </AuthProvider>    
     </div>
   );
 }

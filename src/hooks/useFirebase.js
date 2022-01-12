@@ -1,25 +1,22 @@
-import intializeFirebase from "../Firebase/Firebase.init";
+import { useEffect, useState } from "react";
+
 import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
- 
   onAuthStateChanged,
   signOut,
- 
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
-import { useEffect, useState } from "react";
+import intializeFirebase from "../Firebase/Firebase.init";
 
 intializeFirebase();
 
 const useFirebase = () => {
- 
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
- 
 
   const [user, setUser] = useState({});
 
@@ -30,11 +27,8 @@ const useFirebase = () => {
   const [admin, setAdmin] = useState(false);
 
   const handleGoogleLogin = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        setUser(result.user);
-        setError("");
-      })
+   return signInWithPopup(auth, provider)
+      
       .catch((error) => setError(error.message));
   };
 
@@ -42,43 +36,38 @@ const useFirebase = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-       
       } else {
-        setUser({})
+        setUser({});
         // User is signed out
         // ...
       }
       setIsLoading(false);
     });
-    return () => unsubscribe
+    return () => unsubscribe;
   }, []);
 
-
-
-  useEffect(()=>{
+  useEffect(() => {
     fetch(`https://polar-cliffs-75761.herokuapp.com/checkAdmin/${user.email}`)
-    .then(res => res.json())
-    .then(data => setAdmin(data.admin))
-},[user.email])
+      .then((res) => res.json())
+      .then((data) => setAdmin(data.admin));
+  }, [user.email]);
 
   const handleLogout = () => {
     setIsLoading(true);
     signOut(auth)
-    
       .then(() => {
         setUser({});
       })
-      
-      
+
       .catch((err) => {
         console.log(err);
       })
-      
+
       .finally(() => setIsLoading(false));
-      sessionStorage.removeItem("email")
+    // sessionStorage.removeItem("email");
   };
 
-  const handleUserRegister = ( email, password) => {
+  const handleUserRegister = (email, password) => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
@@ -101,21 +90,24 @@ const useFirebase = () => {
       .then((result) => console.log(result));
   };
 
-  const handleUserLogin = ( email, password) => {
+  const handleUserLogin = (email, password, location, history) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
-        setUser(result.user)
-        sessionStorage.setItem("email", result.user.email);
+        const destination = location?.state?.from || '/'
+        history.replace(destination)
+        setUser(result.user);
+
+        // sessionStorage.setItem("email", result.user.email);
         console.log(result.user);
       })
-      
+
       .catch((error) => {
-        const errorMessage = error.message;
+      const errorMessage = error.message;
       })
       .finally(() => setIsLoading(false));
   };
- 
+
   return {
     handleGoogleLogin,
     admin,
@@ -128,5 +120,3 @@ const useFirebase = () => {
 };
 
 export default useFirebase;
-
-

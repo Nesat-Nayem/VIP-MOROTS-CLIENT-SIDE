@@ -16,7 +16,7 @@ const ShowReview = () => {
         .then((res) => res.json())
         .then((data) => setReviews(data));
     }, []);
-    console.log(reviews);
+    // console.log(reviews);
     return (
       <div>
         <h1>Why Clients <span className="color_clint">Love Us</span></h1>
