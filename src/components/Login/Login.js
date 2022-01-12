@@ -11,7 +11,6 @@ const Login = () => {
   const location = useLocation();
   const history = useHistory();
 
-  
   const { handleGoogleLogin, handleUserLogin } = useAuth();
 
   const { register, handleSubmit, watch, errors } = useForm();
@@ -35,8 +34,12 @@ const Login = () => {
     console.log(handleUserLogin);
   };
 
-  const handleGoogleLoginMain = () => {
-    handleGoogleLogin();
+  const redirect_uri = location.state?.from || '/';
+
+  const handleGoogleLoginPopup = () => {
+    handleGoogleLogin().then((result) => {
+      history.push(redirect_uri);
+    });
   };
 
   return (
@@ -68,7 +71,9 @@ const Login = () => {
               value="Log In"
             />
           </form>
-          <button onClick={handleGoogleLoginMain} className="btn mt-5"><i class="fab fa-google-plus-g fscolor"></i> Sign-In With Google </button>
+          <button onClick={handleGoogleLoginPopup} className="btn mt-5">
+            <i class="fab fa-google-plus-g fscolor"></i> Sign-In With Google{" "}
+          </button>
           <p className="mt-5">
             New Here? <Link to="/register">Create Account</Link>
           </p>
