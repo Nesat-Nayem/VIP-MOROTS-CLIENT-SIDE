@@ -13,3 +13,29 @@
   color: rgb(13, 226, 49);
   font-size: 20px;
 }
+
+.fromLogin{
+  width: 1000px;
+  height: auto;
+  background-color: aquamarine;
+}
+
+
+.inputField{
+  width: 300px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.costomButton{
+  background-color: aqua;
+  border: none;
+  padding: 7px 40px;
+  margin-top: 20px;
+
+}
+
+.btnStyle:hover{
+  background-color: rgb(219, 106, 159) !important;
+  color: aliceblue;
+}

@@ -2,11 +2,7 @@ import React from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-
-// import useFirebase from '../../hooks/useFirebase'
-
 const Navbar = () => {
-  // const { user, handleLogout } = useFirebase()
   const { user, handleLogout } = useAuth();
     console.log(user.email);
   return (

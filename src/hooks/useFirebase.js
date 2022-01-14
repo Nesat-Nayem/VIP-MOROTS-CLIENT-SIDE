@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signOut,
+  FacebookAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
@@ -17,6 +18,8 @@ intializeFirebase();
 const useFirebase = () => {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
+
+  const facebookProvider = new FacebookAuthProvider();
 
   const [user, setUser] = useState({});
 
@@ -31,6 +34,15 @@ const useFirebase = () => {
       
       .catch((error) => setError(error.message));
   };
+
+  const newHandleFacebookLogin = () =>{
+    return signInWithPopup(auth, facebookProvider)
+    .then(result =>{
+      const {displayName, photoURL, email} = result.user;
+      
+    })
+    .catch((error) => setError(error.message));
+  }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -110,6 +122,7 @@ const useFirebase = () => {
 
   return {
     handleGoogleLogin,
+    newHandleFacebookLogin,
     admin,
     handleUserLogin,
     user,

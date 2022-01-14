@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { useForm } from "react-hook-form";
-// import useFirebase from "./../../hooks/useFirebase";
+
 import { Link, useLocation, useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 const Login = () => {
@@ -11,7 +11,8 @@ const Login = () => {
   const location = useLocation();
   const history = useHistory();
 
-  const { handleGoogleLogin, handleUserLogin } = useAuth();
+  const { handleGoogleLogin, newHandleFacebookLogin, handleUserLogin } =
+    useAuth();
 
   const { register, handleSubmit, watch, errors } = useForm();
 
@@ -34,7 +35,7 @@ const Login = () => {
     console.log(handleUserLogin);
   };
 
-  const redirect_uri = location.state?.from || '/';
+  const redirect_uri = location.state?.from || "/";
 
   const handleGoogleLoginPopup = () => {
     handleGoogleLogin().then((result) => {
@@ -42,14 +43,18 @@ const Login = () => {
     });
   };
 
+  const handleFacebookLoginPopup = () => {
+    newHandleFacebookLogin();
+  };
+
   return (
     <div>
-      <div className="row">
-        <div className="login-form mb-5 formControl col-md-6 border border-5">
+      <div className="">
+        <div className="login-form mb-5 formControl">
           <h2>Please Login</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <input
-              className="input-field "
+              className="p-2 m-2 w-25 input-field"
               name="email"
               placeholder="Email"
               type="email"
@@ -57,7 +62,7 @@ const Login = () => {
             />
             <br />
             <input
-              className="input-field"
+              className="p-2 m-2 w-25 input-field"
               name="password"
               type="password"
               placeholder="Password"
@@ -66,19 +71,32 @@ const Login = () => {
             <br />
 
             <input
-              className="submit-btn btn btn-danger mt-3"
+              className="submit-btn costomButton"
               type="submit"
               value="Log In"
             />
           </form>
-          <button onClick={handleGoogleLoginPopup} className="btn mt-5">
-            <i class="fab fa-google-plus-g fscolor"></i> Sign-In With Google{" "}
+
+          <h6 className="mt-5">****** ALSO YOU CAN LOGIN ******</h6>
+
+          <button className="btn mt-5 btnStyle " onClick={handleGoogleLoginPopup} >
+
+            <i class="fab fa-google-plus-g fscolor me-1"></i>
+            
+             Sign-In With Google
           </button>
+
+          <button onClick={handleFacebookLoginPopup} className="btn mt-5 btnStyle ">
+            <i class="fab fa-facebook fscolor"></i> Sign-In With Facebook
+          </button>
+
           <p className="mt-5">
             New Here? <Link to="/register">Create Account</Link>
           </p>
         </div>
-        <div className="col-md-6 border border-5"></div>
+        {/* <div className="col-md-6">
+          <img className="img-fluid" src="https://i.ibb.co/rQThyv8/slider1.jpg" alt="" />
+        </div> */}
       </div>
     </div>
   );

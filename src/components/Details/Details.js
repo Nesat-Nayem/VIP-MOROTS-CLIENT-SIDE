@@ -55,18 +55,18 @@ const Details = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
             
               <input
-                {...register("name")}
-                placeholder="Name"
+                {...register("name",{ required: true })}
+                // placeholder="Name"
                 
                 defaultValue={service?.name}
                 className="p-2 m-2 w-100 input-field"
               />
 
               <input
-                {...register("email")}
-                placeholder="Email"
+                {...register("price",{ required: true })}
+                // placeholder="Email"
                 
-                defaultValue={user?.email}
+                defaultValue={service?.price}
                 className="p-2 m-2 w-100 input-field"
               />        
               <input
