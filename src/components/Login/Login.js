@@ -79,14 +79,18 @@ const Login = () => {
 
           <h6 className="mt-5">****** ALSO YOU CAN LOGIN ******</h6>
 
-          <button className="btn mt-5 btnStyle " onClick={handleGoogleLoginPopup} >
-
+          <button
+            className="btn mt-5 btnStyle "
+            onClick={handleGoogleLoginPopup}
+          >
             <i class="fab fa-google-plus-g fscolor me-1"></i>
-            
-             Sign-In With Google
+            Sign-In With Google
           </button>
 
-          <button onClick={handleFacebookLoginPopup} className="btn mt-5 btnStyle ">
+          <button
+            onClick={handleFacebookLoginPopup}
+            className="btn mt-5 btnStyle "
+          >
             <i class="fab fa-facebook fscolor"></i> Sign-In With Facebook
           </button>
 
@@ -94,9 +98,6 @@ const Login = () => {
             New Here? <Link to="/register">Create Account</Link>
           </p>
         </div>
-        {/* <div className="col-md-6">
-          <img className="img-fluid" src="https://i.ibb.co/rQThyv8/slider1.jpg" alt="" />
-        </div> */}
       </div>
     </div>
   );

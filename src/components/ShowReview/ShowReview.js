@@ -1,11 +1,5 @@
-import React, { useEffect, useState, Component } from "react";
-
+import React, { useEffect, useState } from "react";
 import BeautyStars from "beauty-stars";
-
-import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import Rating from "react-rating";
 import "./ShowReview.css";
 
 const ShowReview = () => {

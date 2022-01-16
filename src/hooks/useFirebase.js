@@ -111,7 +111,6 @@ const useFirebase = () => {
         history.replace(destination);
         setUser(result.user);
 
-        // sessionStorage.setItem("email", result.user.email);
         console.log(result.user);
       })
 

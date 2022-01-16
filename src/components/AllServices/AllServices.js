@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import Rating from "react-rating";
-
 const AllServices = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {

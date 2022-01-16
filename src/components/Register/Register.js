@@ -1,21 +1,20 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useFirebase from "./../../hooks/useFirebase";
-import './Register.css'
+import "./Register.css";
 
 const Register = () => {
   const { googleSignIn, handleUserRegister } = useFirebase();
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    handleUserRegister( data.email, data.password);
+    handleUserRegister(data.email, data.password);
     console.log(data);
   };
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-      
         <input
           className="input-field w-25"
           name="email"
@@ -38,10 +37,11 @@ const Register = () => {
           type="submit"
           value="Register"
         />
-      
       </form>
 
-      <p className="mt-5">Already Have An Account? <Link to="/login">Login</Link></p>
+      <p className="mt-5">
+        Already Have An Account? <Link to="/login">Login</Link>
+      </p>
     </div>
   );
 };

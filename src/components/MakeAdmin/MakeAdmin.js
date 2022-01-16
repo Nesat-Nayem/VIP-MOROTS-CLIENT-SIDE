@@ -2,7 +2,7 @@ import React from "react";
 import "./MakeAdmin.css";
 import { useForm } from "react-hook-form";
 const MakeAdmin = () => {
-  const { register, handleSubmit, reset, watch, errors } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
     fetch("https://blooming-forest-81529.herokuapp.com/makeAdmin", {

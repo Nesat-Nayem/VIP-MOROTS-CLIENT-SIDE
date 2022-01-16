@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import useFirebase from "./../../hooks/useFirebase";
 
 const Review = () => {
-  const { register, handleSubmit, reset, watch, errors } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const { user } = useFirebase();
   const onSubmit = (data) => {
     fetch("https://blooming-forest-81529.herokuapp.com/addReview", {
