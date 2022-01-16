@@ -30,19 +30,18 @@ const useFirebase = () => {
   const [admin, setAdmin] = useState(false);
 
   const handleGoogleLogin = () => {
-   return signInWithPopup(auth, provider)
-      
-      .catch((error) => setError(error.message));
+    return signInWithPopup(auth, provider).catch((error) =>
+      setError(error.message)
+    );
   };
 
-  const newHandleFacebookLogin = () =>{
+  const newHandleFacebookLogin = () => {
     return signInWithPopup(auth, facebookProvider)
-    .then(result =>{
-      const {displayName, photoURL, email} = result.user;
-      
-    })
-    .catch((error) => setError(error.message));
-  }
+      .then((result) => {
+        const { displayName, photoURL, email } = result.user;
+      })
+      .catch((error) => setError(error.message));
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -59,7 +58,9 @@ const useFirebase = () => {
   }, []);
 
   useEffect(() => {
-    fetch(`https://polar-cliffs-75761.herokuapp.com/checkAdmin/${user.email}`)
+    fetch(
+      `https://blooming-forest-81529.herokuapp.com/checkAdmin/${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);
@@ -93,7 +94,7 @@ const useFirebase = () => {
   };
 
   const hanldeUserInfoRegister = (email) => {
-    fetch("https://polar-cliffs-75761.herokuapp.com/addUserInfo", {
+    fetch("https://blooming-forest-81529.herokuapp.com/addUserInfo", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ email }),
@@ -106,8 +107,8 @@ const useFirebase = () => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((result) => {
-        const destination = location?.state?.from || '/'
-        history.replace(destination)
+        const destination = location?.state?.from || "/";
+        history.replace(destination);
         setUser(result.user);
 
         // sessionStorage.setItem("email", result.user.email);
@@ -115,7 +116,7 @@ const useFirebase = () => {
       })
 
       .catch((error) => {
-      const errorMessage = error.message;
+        const errorMessage = error.message;
       })
       .finally(() => setIsLoading(false));
   };

@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import useFirebase from "./../../hooks/useFirebase";
 const MyBookings = () => {
   const { user } = useFirebase();
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch(`https://polar-cliffs-75761.herokuapp.com/myOrder/${user?.email}`)
+    fetch(`https://blooming-forest-81529.herokuapp.com/myOrder/${user?.email}`)
       .then((res) => res.json())
       // .then((data) => console.log(data));
       .then((data) => setBooks(data));
   }, [user?.email]);
 
   const handleDelete = (id) => {
-    fetch(`https://polar-cliffs-75761.herokuapp.com/myOrder/${id}`, {
+    fetch(`https://blooming-forest-81529.herokuapp.com/myOrder/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -42,6 +43,14 @@ const MyBookings = () => {
               >
                 delete book
               </button>
+              {book.payment ? (
+                "paid"
+              ) : (
+                <Link to={`/dashboard/myBooking/payment/${book._id}`}>
+                  {" "}
+                  <button>pay</button>{" "}
+                </Link>
+              )}
             </div>
           </div>
         </div>

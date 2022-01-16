@@ -2,10 +2,10 @@ import React from "react";
 import "./MakeAdmin.css";
 import { useForm } from "react-hook-form";
 const MakeAdmin = () => {
-  const { register, handleSubmit,reset, watch, errors } = useForm();
+  const { register, handleSubmit, reset, watch, errors } = useForm();
 
   const onSubmit = (data) => {
-    fetch("https://polar-cliffs-75761.herokuapp.com/makeAdmin", {
+    fetch("https://blooming-forest-81529.herokuapp.com/makeAdmin", {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -13,10 +13,10 @@ const MakeAdmin = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
-          alert('successfully add admin');
-     
+          alert("successfully add admin");
+
           reset();
-      }
+        }
         // console.log(result)
       });
     // console.log(data);

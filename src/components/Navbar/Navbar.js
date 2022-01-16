@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 const Navbar = () => {
   const { user, handleLogout } = useAuth();
-    console.log(user.email);
+    // console.log(user.email);
   return (
     <div className="container">
       <nav className="navbar navbar-expand-lg navbar-light py-5">

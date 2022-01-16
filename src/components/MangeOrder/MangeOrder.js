@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 
 const MangeOrder = () => {
   const [orders, setOrders] = useState([]);
-  
 
   const { register, handleSubmit } = useForm();
 
@@ -13,11 +12,10 @@ const MangeOrder = () => {
 
   console.log(status);
   useEffect(() => {
-    fetch("https://polar-cliffs-75761.herokuapp.com/allOrders")
+    fetch("https://blooming-forest-81529.herokuapp.com/allOrders")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
-
 
   const handleOrderId = (id) => {
     setOrderId(id);
@@ -26,11 +24,14 @@ const MangeOrder = () => {
 
   const onSubmit = (data) => {
     console.log(data, orderId);
-    fetch(`https://polar-cliffs-75761.herokuapp.com/statusUpdate/${orderId}`, {
-      method: "PUT",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      `https://blooming-forest-81529.herokuapp.com/statusUpdate/${orderId}`,
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((result) => console.log(result));
   };
@@ -54,7 +55,7 @@ const MangeOrder = () => {
             <tr>
               <td>{index}</td>
               <td>{pd.name}</td>
-          
+
               <td>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <select
@@ -68,10 +69,7 @@ const MangeOrder = () => {
                   <input type="submit" />
                 </form>
               </td>
-              <button
-              
-              className="btn btn-danger" >delete</button>
-              
+              <button className="btn btn-danger">delete</button>
             </tr>
           </tbody>
         ))}

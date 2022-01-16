@@ -3,10 +3,10 @@ import { useForm } from "react-hook-form";
 import useFirebase from "./../../hooks/useFirebase";
 
 const Review = () => {
-  const { register, handleSubmit,reset, watch, errors } = useForm();
+  const { register, handleSubmit, reset, watch, errors } = useForm();
   const { user } = useFirebase();
   const onSubmit = (data) => {
-    fetch("https://polar-cliffs-75761.herokuapp.com/addReview", {
+    fetch("https://blooming-forest-81529.herokuapp.com/addReview", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -14,13 +14,11 @@ const Review = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
-          alert('Thanks for your valuable Review');
-     
-          reset();
-      }
-       
-      });
+          alert("Thanks for your valuable Review");
 
+          reset();
+        }
+      });
   };
   return (
     <div>
@@ -29,17 +27,17 @@ const Review = () => {
         <input
           className="input-field"
           name="name"
-          placeholder="Name"         
+          placeholder="Name"
           {...register("name")}
         />
-        <br/>
-         <input
+        <br />
+        <input
           className="input-field"
           name="position"
           placeholder="Position"
           {...register("Position")}
         />
-   
+
         <br />
         <input
           className="input-field"
@@ -56,7 +54,7 @@ const Review = () => {
           {...register("img")}
         />
         <br />
-       
+
         <input
           className="input-field"
           name="Star"

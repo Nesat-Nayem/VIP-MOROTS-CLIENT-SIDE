@@ -4,10 +4,10 @@ import useAuth from '../../hooks/useAuth';
 // import useFirebase from '../../hooks/useFirebase';
 
 const PrivateRoute = ({ children, ...rest }) => {
-    console.log(children);
+    // console.log(children);
     // const email= sessionStorage.getItem("email");
     const {user, isLoading} = useAuth();
-    console.log(user);
+    // console.log(user);
     if(isLoading) return 'loading';
     return (
         <Route

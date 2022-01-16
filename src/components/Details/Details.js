@@ -17,7 +17,7 @@ const Details = () => {
   const onSubmit = (data) => {
     data.email = user?.email;
     data.status = "pending";
-    fetch("https://polar-cliffs-75761.herokuapp.com/addOrders", {
+    fetch("https://blooming-forest-81529.herokuapp.com/addOrders", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -25,16 +25,17 @@ const Details = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
-          alert('order is Recorded .... got it soon');
-    
+          alert("order is Recorded .... got it soon");
+
           reset();
-      }
+        }
       });
-    
   };
 
   useEffect(() => {
-    fetch(`https://polar-cliffs-75761.herokuapp.com/singleService/${serviceId}`)
+    fetch(
+      `https://blooming-forest-81529.herokuapp.com/singleService/${serviceId}`
+    )
       .then((res) => res.json())
       .then((data) => setService(data));
   }, []);
@@ -48,46 +49,41 @@ const Details = () => {
             <h4 className="text-start m-3">{service?.name}</h4>
             <h4 className="text-end mb-3"> ${service?.price}</h4>
             <p>{service?.description}</p>
-            
-            
           </div>
           <div className="col-md-6">
             <form onSubmit={handleSubmit(onSubmit)}>
-            
               <input
-                {...register("name",{ required: true })}
+                {...register("name", { required: true })}
                 // placeholder="Name"
-                
+
                 defaultValue={service?.name}
                 className="p-2 m-2 w-100 input-field"
               />
 
               <input
-                {...register("price",{ required: true })}
+                {...register("price", { required: true })}
                 // placeholder="Email"
-                
+
                 defaultValue={service?.price}
                 className="p-2 m-2 w-100 input-field"
-              />        
+              />
               <input
                 {...register("city")}
                 placeholder="Your City"
                 className="p-2 m-2 w-100 input-field"
-              /> 
+              />
               <input
                 {...register("address")}
-                
                 placeholder="Address"
                 className="p-2 m-2 w-100 input-field"
               />
               <input
                 {...register("phone")}
                 placeholder="Phone Number"
-               
                 type="number"
                 className="p-2 m-2 w-100 input-field"
               />
-    
+
               <input
                 type="submit"
                 value="Order now"

@@ -10,12 +10,12 @@ const AddServices = () => {
     handleSubmit,
     reset,
     watch,
-    
+
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch("https://polar-cliffs-75761.herokuapp.com/addServices", {
+    fetch("https://blooming-forest-81529.herokuapp.com/addServices", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -23,9 +23,9 @@ const AddServices = () => {
       .then((res) => res.json())
       .then((result) => {
         if (result.insertedId) {
-          alert('add successfully');     
+          alert("add successfully");
           reset();
-      }
+        }
       });
   };
   return (
@@ -60,7 +60,7 @@ const AddServices = () => {
                   type="number"
                   className="p-2 m-2 w-100 input-field"
                 />
-              
+
                 <br />
 
                 {errors.exampleRequired && <span>This field is required</span>}
