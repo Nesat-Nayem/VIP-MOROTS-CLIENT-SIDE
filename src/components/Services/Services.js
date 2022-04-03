@@ -11,8 +11,8 @@ const Services = () => {
   // console.log(services);
   return (
     <div>
-      <div className="services">
-        <div className="row container">
+      <div className="services container">
+        <div className="row ">
           {services?.map((pd, index) => (
             <div className="col-md-6 col-lg-6">
               <div className="service p-3 border border m-2">

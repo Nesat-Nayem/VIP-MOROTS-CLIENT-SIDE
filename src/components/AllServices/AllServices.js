@@ -11,11 +11,11 @@ const AllServices = () => {
   return (
     <div>
       <h1 className="m-5">Featured Cars</h1>
-      <div className="services">
-        <div className="row container">
+      <div className="services container">
+        <div className="row">
           {services?.map((pd, index) => (
             <div className="col-md-6 col-lg-6">
-              <div className="service p-3 border border m-2">
+              <div className="service p-3 border ">
                 <div className="service-img">
                   <img className="w-100" src={pd?.image} alt="" />
                 </div>
