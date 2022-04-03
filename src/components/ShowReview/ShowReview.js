@@ -15,8 +15,8 @@ const ShowReview = () => {
       <h1>
         Why Clients <span className="color_clint">Love Us</span>
       </h1>
-      <div className="reviews">
-        <div className="row container">
+      <div className="reviews container">
+        <div className="row ">
           {reviews?.map((pd, index) => (
             <div className="col-md-6 col-lg-4">
               <div className="service p-3 border border m-2">
